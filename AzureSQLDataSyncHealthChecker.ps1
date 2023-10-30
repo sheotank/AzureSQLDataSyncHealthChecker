@@ -1411,7 +1411,7 @@ function TrackWarningAnonymously ([String] $warningCode) {
 function ValidateSyncDB {
     Try {
         $SyncDbConnection = New-Object System.Data.SqlClient.SQLConnection
-        $SyncDbConnection.ConnectionString = [string]::Format("Server=tcp:{0},1433;Initial Catalog={1};Persist Security Info=False;User ID={2};Password={3};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;", $SyncDbServer, $SyncDbDatabase, $SyncDbUser, $SyncDbPassword)
+        $SyncDbConnection.ConnectionString = [string]::Format("Server=tcp:{0},1433;Initial Catalog={1};Persist Security Info=False;User ID={2};Password={3};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=True;Connection Timeout=30;", $SyncDbServer, $SyncDbDatabase, $SyncDbUser, $SyncDbPassword)
 
         Write-Host Connecting to SyncDB $SyncDbServer"/"$SyncDbDatabase
         Try {
@@ -1754,7 +1754,7 @@ function DumpMetadataSchemasForSyncGroup([String] $syncGoupName) {
     Try {
         Write-Host Running DumpMetadataSchemasForSyncGroup
         $SyncDbConnection = New-Object System.Data.SqlClient.SQLConnection
-        $SyncDbConnection.ConnectionString = [string]::Format("Server=tcp:{0},1433;Initial Catalog={1};Persist Security Info=False;User ID={2};Password={3};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;", $SyncDbServer, $SyncDbDatabase, $SyncDbUser, $SyncDbPassword)
+        $SyncDbConnection.ConnectionString = [string]::Format("Server=tcp:{0},1433;Initial Catalog={1};Persist Security Info=False;User ID={2};Password={3};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=True;Connection Timeout=30;", $SyncDbServer, $SyncDbDatabase, $SyncDbUser, $SyncDbPassword)
         Write-Host Connecting to SyncDB $SyncDbServer"/"$SyncDbDatabase
         Try {
             $SyncDbConnection.Open()
@@ -1952,7 +1952,7 @@ function ValidateDSSMember() {
         $allBulkTypeList = New-Object System.Collections.ArrayList
 
         $SyncDbConnection = New-Object System.Data.SqlClient.SQLConnection
-        $SyncDbConnection.ConnectionString = [string]::Format("Server=tcp:{0},1433;Initial Catalog={1};Persist Security Info=False;User ID={2};Password={3};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;", $SyncDbServer, $SyncDbDatabase, $SyncDbUser, $SyncDbPassword)
+        $SyncDbConnection.ConnectionString = [string]::Format("Server=tcp:{0},1433;Initial Catalog={1};Persist Security Info=False;User ID={2};Password={3};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=True;Connection Timeout=30;", $SyncDbServer, $SyncDbDatabase, $SyncDbUser, $SyncDbPassword)
 
         Write-Host Connecting to SyncDB $SyncDbServer"/"$SyncDbDatabase
         Try {
@@ -2281,7 +2281,7 @@ function Monitor() {
     $monitorUntil = (Get-Date).AddMinutes($MonitoringDurationInMinutes)
 
     $HubConnection = New-Object System.Data.SqlClient.SQLConnection
-    $HubConnection.ConnectionString = [string]::Format("Server=tcp:{0},1433;Initial Catalog={1};Persist Security Info=False;User ID={2};Password={3};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;", $HubServer, $HubDatabase, $HubUser, $HubPassword)
+    $HubConnection.ConnectionString = [string]::Format("Server=tcp:{0},1433;Initial Catalog={1};Persist Security Info=False;User ID={2};Password={3};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=True;Connection Timeout=30;", $HubServer, $HubDatabase, $HubUser, $HubPassword)
     $HubCommand = New-Object System.Data.SQLClient.SQLCommand
     $HubCommand.Connection = $HubConnection
     $HubCommand.CommandTimeout = $cmdTimeout
